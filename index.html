@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+            }
+        </style>
+
+        <script type="module" src="./dist/myuw-search.mjs"></script>
+        <script nomodule src="./dist/myuw-search.js"></script>
+
+        <script type="module" src="https://unpkg.com/@myuw-web-components/myuw-app-bar@^1?module"></script>
+        <script nomodule scr="https://unpkg.com/@myuw-web-components/myuw-app-bar@^1"></script>
+
+        <script type="module" src="https://unpkg.com/@myuw-web-components/myuw-drawer@^1?module"></script>
+        <script nomodule src="https://unpkg.com/@myuw-web-components/myuw-drawer@^1"></script>
+
+        <script type="module" src="https://unpkg.com/@myuw-web-components/myuw-app-styles@^1?module"></script>
+        <script nomodule src="https://unpkg.com/@myuw-web-components/myuw-app-styles@^1"></script>
+    </head>
+    <body>
+        <!-- Styles for demo purposes only -->
+        <style>
+            body {
+                margin: 0;
+                background: #ccc;
+            }
+        </style>
+        <myuw-app-bar
+            role="toolbar"
+            theme-name="MyUW"
+            theme-url="https://my.wisc.edu"
+            app-name="Search Demo">
+            <myuw-drawer slot="myuw-navigation">
+                <myuw-drawer-link
+                  slot="myuw-drawer-links"
+                  name="MyUW home"
+                  icon="mail"
+                  href="http://google.com">
+                </myuw-drawer-link>
+                <myuw-drawer-link
+                  slot="myuw-drawer-links"
+                  name="Browse apps"
+                  icon="explore"
+                  href="http://google.com">
+                </myuw-drawer-link>
+            </myuw-drawer>
+            <myuw-search slot="myuw-search" icon="search" input-label="Search the demo" button-label="Submit the search"></myuw-search>
+        </myuw-app-bar>
+
+        <div class="demo__container">
+            <div class="demo__test-content">
+                
+            </div>
+        </div>
+        <script src="./node_modules/tota11y/build/tota11y.min.js"></script>
+    </body>
+</html>
