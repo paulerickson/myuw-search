@@ -46,7 +46,7 @@
                   href="http://google.com">
                 </myuw-drawer-link>
             </myuw-drawer>
-            <myuw-search slot="myuw-search" icon="search" input-label="Search the demo" button-label="Submit the search"></myuw-search>
+            <myuw-search id="search" slot="myuw-search" icon="search" input-label="Search the demo" button-label="Submit the search"></myuw-search>
         </myuw-app-bar>
 
         <div class="demo__container">
@@ -55,5 +55,12 @@
             </div>
         </div>
         <script src="./node_modules/tota11y/build/tota11y.min.js"></script>
+
+        <script>
+            // Add a callback to the serach component
+            document.getElementById('search').callback = (value) => {
+                alert(`Search for "${value}"`);
+            }
+        </script>
     </body>
 </html>
