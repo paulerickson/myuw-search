@@ -4,8 +4,12 @@
             body {
                 padding: 0;
                 margin: 0;
+                background: #ccc;
             }
         </style>
+
+        <!-- Polyfill loader -->
+        <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.0.0/webcomponents-bundle.js"></script>
 
         <script type="module" src="./dist/myuw-search.mjs"></script>
         <script nomodule src="./dist/myuw-search.js"></script>
@@ -22,9 +26,11 @@
     <body>
         <!-- Styles for demo purposes only -->
         <style>
-            body {
-                margin: 0;
-                background: #ccc;
+            .demo__test-content {
+                text-align: center;
+            }
+            #searchValue {
+                font-size: 30px;
             }
         </style>
         <myuw-app-bar
@@ -46,12 +52,19 @@
                   href="http://google.com">
                 </myuw-drawer-link>
             </myuw-drawer>
-            <myuw-search id="search" slot="myuw-search" icon="search" input-label="Search the demo" button-label="Submit the search"></myuw-search>
+            <myuw-search 
+                id="search" 
+                slot="myuw-search" 
+                icon="search" 
+                input-label="Search the demo" 
+                button-label="Submit the search">
+            </myuw-search>
         </myuw-app-bar>
 
         <div class="demo__container">
             <div class="demo__test-content">
-                
+                <h1 id="searchLabel">Try using the search bar!</h1>
+                <p id="searchValue"></p>
             </div>
         </div>
         <script src="./node_modules/tota11y/build/tota11y.min.js"></script>
@@ -59,7 +72,11 @@
         <script>
             // Add a callback to the serach component
             document.getElementById('search').callback = (value) => {
-                alert(`Search for "${value}"`);
+                var label = document.getElementById('searchLabel');
+                var searchValue = document.getElementById('searchValue');
+                
+                label.innerText = 'You searched for: ';
+                searchValue.innerText = '"' + value + '"';
             }
         </script>
     </body>
