@@ -6,7 +6,7 @@ Add the following import to your page's `<head>`:
 
 ```html
 <script type="module" src="https://unpkg.com/@myuw-web-components/myuw-search@^1?module"></script>
-<script nomodule scr="https://unpkg.com/@myuw-web-components/myuw-search@^1"></script>
+<script nomodule src="https://unpkg.com/@myuw-web-components/myuw-search@^1"></script>
 ```
 
 **Important:** For responsive features to work properly, ensure your application includes the viewport meta tag:
