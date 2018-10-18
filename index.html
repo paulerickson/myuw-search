@@ -1,5 +1,7 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <style>
             body {
                 padding: 0;
@@ -15,22 +17,73 @@
         <script nomodule src="./dist/myuw-search.js"></script>
 
         <script type="module" src="https://unpkg.com/@myuw-web-components/myuw-app-bar@^1?module"></script>
-        <script nomodule scr="https://unpkg.com/@myuw-web-components/myuw-app-bar@^1"></script>
+        <script nomodule src="https://unpkg.com/@myuw-web-components/myuw-app-bar@^1"></script>
 
         <script type="module" src="https://unpkg.com/@myuw-web-components/myuw-drawer@^1?module"></script>
         <script nomodule src="https://unpkg.com/@myuw-web-components/myuw-drawer@^1"></script>
 
-        <script type="module" src="https://unpkg.com/@myuw-web-components/myuw-app-styles@^1?module"></script>
-        <script nomodule src="https://unpkg.com/@myuw-web-components/myuw-app-styles@^1"></script>
+        <script src="https://unpkg.com/@myuw-web-components/myuw-app-styles@^1"></script>
     </head>
     <body>
         <!-- Styles for demo purposes only -->
         <style>
-            .demo__test-content {
-                text-align: center;
+            .test-content {
+                text-align: center;  
+                max-width: 80%;
+                margin: 0 auto;
+                font-family: var(--myuw-font, 'Roboto', 'Arial', sans-serif);
+                font-size: 16px;
+            }
+            .test-content button {
+                min-width: 48px;
+                min-height: 24px;
+                max-height: 36px;
+                padding: 8px 8px;
+                font-size: 14px;
+                overflow-y: hidden;
+                border-radius: 5px;
+                transition: background 0.15s ease-in-out;
+                background: var(--myuw-accent-bg);
+                color: var(--myuw-accent-color);
+                outline: none;
+            }
+            .test-content button:hover {
+                background: #046085;
+                cursor: pointer;
             }
             #searchValue {
                 font-size: 30px;
+            }
+            .test-content form {
+                display: flex;
+                flex-direction: column;
+                margin: 0 auto;
+                max-width: 500px;
+                align-items: start;
+            }
+            .test-content form .form-control {
+                margin: 8px 0;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+            }
+            .test-content label {
+                font-size: 16px;
+                margin-right: 12px;
+                display: flex;
+                align-items: center;
+                align-content: center;
+                line-height: 24px;
+            }
+            .test-content input {
+                height: 36px;
+                border-radius: 5px;
+                margin-right: 8px;
+                font-size: 16px;
+                border: 1px rgb(196, 196, 196) solid;
+                padding: 0 12px;
+                flex: auto;
             }
         </style>
         <myuw-app-bar
@@ -62,21 +115,58 @@
         </myuw-app-bar>
 
         <div class="demo__container">
-            <div class="demo__test-content">
+            <div class="test-content">
                 <h1 id="searchLabel">Try using the search bar!</h1>
                 <p id="searchValue"></p>
+                <form name="searchDemo" onsubmit="event.preventDefault();updateSearchBar();">
+                    <div class="form-control">
+                        <label for="searchPlaceholder">Search box placeholder:</label> 
+                        <input id="searchPlaceholder" type="text" placeholder="Search MyUW">
+                    </div>
+                    <div class="form-control">
+                        <label for="searchAriaLabel">Search button aria-label:</label>
+                        <input id="searchAriaLabel" type="text" placeholder="Submit MyUW search">
+                    </div>
+                    <div class="form-control">
+                        <label for="searchIcon">Material icon:</label>
+                        <input id="searchIcon" type="text" placeholder="search">
+                    </div>
+                    <button>Update search component</button>
+                </form>
             </div>
         </div>
         <script src="./node_modules/tota11y/build/tota11y.min.js"></script>
 
         <script>
             // Add a callback to the serach component
-            document.getElementById('search').callback = (value) => {
+            document.body.addEventListener('myuw-search', (event) => {
+                var value = event.detail.value;
                 var label = document.getElementById('searchLabel');
                 var searchValue = document.getElementById('searchValue');
                 
                 label.innerText = 'You searched for: ';
                 searchValue.innerText = '"' + value + '"';
+            }, false);
+
+            function updateSearchBar() {
+                // Get all elements
+                var searchBar = document.getElementsByTagName('myuw-search')[0];
+                var ariaLabel = document.getElementById('searchAriaLabel');
+                var placeholder = document.getElementById('searchPlaceholder');
+                var icon = document.getElementById('searchIcon');
+
+                
+
+                // Update populated fields
+                if (ariaLabel.value) {
+                    searchBar.setAttribute('button-label', ariaLabel.value);
+                }
+                if (placeholder.value) {
+                    searchBar.setAttribute('input-label', placeholder.value);
+                }
+                if (icon.value) {
+                    searchBar.setAttribute('icon', icon.value);
+                }
             }
         </script>
     </body>
