@@ -1,6 +1,6 @@
 {
   "name": "@myuw-web-components/myuw-search",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "A material search field made for use with MyUW web components",
   "module": "dist/myuw-search.min.mjs",
   "browser": "dist/myuw-search.min.js",
