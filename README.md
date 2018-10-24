@@ -28,7 +28,7 @@ Use the component's HTML tag wherever you want:
 Listen for the `myuw-search` CustomEvent and process the value how you like:
 
 ```js
-/* 
+/*
     1. Listen for myuw-search event
     2. Get the event data from event.detail.value
     3. Do what you want with the search term!
@@ -51,7 +51,7 @@ document.body.addEventListener('myuw-search', (event) => {
 ### Custom CSS properties
 
 - **--myuw-search-border**: Used to set the border color of the search component (to support themes with light background colors). Defaults to `none`.
-- **--myuw-app-bar-color**: Used by to set the color of the search button icon on small screens. Defaults to white. 
+- **--myuw-app-bar-color**: Used by to set the color of the search button icon on small screens. Defaults to white.
 
 ## Development and contribution
 
@@ -61,3 +61,7 @@ To run the demo app locally and test the component, run the following commands:
 $ npm install
 $ npm start
 ```
+
+
+Cross-browser testing provided by:<br/>
+<a href="https://www.browserstack.com/"><img width="160" src="https://myuw-web-components.github.io/img/Browserstack-logo.svg" alt="BrowserStack"/></a>
