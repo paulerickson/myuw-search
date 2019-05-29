@@ -74,7 +74,8 @@
     #icon {
         color: #333;
     }
-    @media (max-width: 600px) {
+    @media screen, \0 all, \\0 screen {
+      @media (max-width: 600px) {
         :host,
         myuw-search {
             border: none;
@@ -165,6 +166,7 @@
             background: transparent;
         }
     }
+  }
 </style>
 <form id='form' class='myuw-search-container' onsubmit='$event.preventDefault(); submitSearch($event)'>
     <button id='toggle' aria-label='' type='button'>

@@ -1,10 +1,10 @@
 import { rollup } from 'rollup';
 import html from 'rollup-plugin-html';
 import minify from 'rollup-plugin-minify-es';
+import babel from 'rollup-plugin-babel';
 
 let fileName = 'myuw-search';
 let objName = 'MyUWSearch';
-
 
 let plugins = {
   full: [
@@ -38,7 +38,7 @@ let plugins = {
 export default [
   {
     input: `src/${fileName}.js`,
-    plugins: plugins.full,
+    plugins: plugins.full.concat([babel({exclude: 'node_modules/**'})]),
     output: {
       file: `dist/${fileName}.js`,
       name: objName,
@@ -47,7 +47,7 @@ export default [
   },
   {
     input: `src/${fileName}.js`,
-    plugins: plugins.min,
+    plugins: plugins.min.concat([babel({exclude: 'node_modules/**'})]),
     output: {
       file: `dist/${fileName}.min.js`,
       name: objName,
