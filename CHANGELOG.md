@@ -1,5 +1,9 @@
 # myuw-search versions
 
+## 1.3.1
+
+* Added more components to local demo to test mobile search positioning 
+
 ## 1.3.0
 
 * Added `myuw-search` CustomEvent that exposes the value in the search field when a search is submitted
