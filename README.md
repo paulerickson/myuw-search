@@ -2,39 +2,34 @@
 
 ## Getting Started
 
-Add the following import to your page's `<head>`:
+Include the component as follows:
 
 ```html
-<script type="module" src="https://unpkg.com/@myuw-web-components/myuw-search@^1?module"></script>
-<script nomodule src="https://unpkg.com/@myuw-web-components/myuw-search@^1"></script>
-```
+<!-- import the module -->
+<script type="module" src="https://cdn.my.wisc.edu/@myuw-web-components/myuw-search@latest/myuw-search.min.mjs"></script>
 
-**Important:** For responsive features to work properly, ensure your application includes the viewport meta tag:
+<!-- fallback for browsers without ES2015 module support -->
+<script nomodule src="https://cdn.my.wisc.edu/@myuw-web-components/myuw-search@latest/myuw-search.min.js"></script>
 
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1">
-```
-
-Use the component's HTML tag wherever you want:
-
-```html
 <myuw-search
-    input-label="Search MyUW"
-    button-label="Submit search"
-    icon="search">
-</myuw-search>
+  input-label="Search MyUW"
+  button-label="Submit search"
+  icon="search"
+></myuw-search>
 ```
+
+_Note:_ The evergreen "latest" version can be used for convenience, but in production settings it is recommended to use the latest [release version](https://github.com/myuw-web-components/myuw-search/releases) specifically, and upgrade only after testing!
 
 Listen for the `myuw-search` CustomEvent and process the value how you like:
 
 ```js
 /*
-    1. Listen for myuw-search event
-    2. Get the event data from event.detail.value
-    3. Do what you want with the search term!
+  1. Listen for myuw-search event
+  2. Get the event data from event.detail.value
+  3. Do what you want with the search term!
 */
 document.body.addEventListener('myuw-search', (event) => {
-  var valueFromSearchBar = event.detail.value // "detail" object is part of CustomEvent spec
+  const valueFromSearchBar = event.detail.value // "detail" object is part of CustomEvent spec
   /*
     Perform search logic here. For example:
       - Pass the search value as a parameter to your app's search page
@@ -61,7 +56,6 @@ To run the demo app locally and test the component, run the following commands:
 $ npm install
 $ npm start
 ```
-
 
 Cross-browser testing provided by:<br/>
 <a href="https://www.browserstack.com/"><img width="160" src="https://myuw-web-components.github.io/img/Browserstack-logo.svg" alt="BrowserStack"/></a>

@@ -1,4 +1,3 @@
-import { rollup } from 'rollup';
 import html from 'rollup-plugin-html';
 import minify from 'rollup-plugin-minify-es';
 import babel from 'rollup-plugin-babel';
@@ -33,7 +32,6 @@ let plugins = {
     })
   ]
 };
-
 
 export default [
   {
